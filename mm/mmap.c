@@ -2127,6 +2127,7 @@ int expand_upwards(struct vm_area_struct *vma, unsigned long address)
 	if (!(vma->vm_flags & VM_GROWSUP))
 		return -EFAULT;
 
+<<<<<<< HEAD
 	/* Guard against exceeding limits of the address space. */
 	address &= PAGE_MASK;
 	if (address >= TASK_SIZE)
@@ -2140,6 +2141,18 @@ int expand_upwards(struct vm_area_struct *vma, unsigned long address)
 	if (gap_addr < address || gap_addr > TASK_SIZE)
 		gap_addr = TASK_SIZE;
 
+=======
+	/* Guard against wrapping around to address 0. */
+	address &= PAGE_MASK;
+	address += PAGE_SIZE;
+	if (!address)
+		return -ENOMEM;
+
+	/* Enforce stack_guard_gap */
+	gap_addr = address + stack_guard_gap;
+	if (gap_addr < address)
+		return -ENOMEM;
+>>>>>>> 07cf73fe282... BACKPORT: mm: larger stack guard gap, between vmas
 	next = vma->vm_next;
 	if (next && next->vm_start < gap_addr) {
 		if (!(next->vm_flags & VM_GROWSUP))
