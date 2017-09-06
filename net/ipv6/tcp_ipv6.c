@@ -911,20 +911,15 @@ static void tcp_v6_timewait_ack(struct sock *sk, struct sk_buff *skb)
 static void tcp_v6_reqsk_send_ack(struct sock *sk, struct sk_buff *skb,
 				  struct request_sock *req)
 {
-<<<<<<< HEAD
 	/* RFC 7323 2.3
 	 * The window field (SEG.WND) of every outgoing segment, with the
 	 * exception of <SYN> segments, MUST be right-shifted by
 	 * Rcv.Wind.Shift bits:
 	 */
-	tcp_v6_send_ack(skb, tcp_rsk(req)->snt_isn + 1, tcp_rsk(req)->rcv_isn + 1,
-			req->rcv_wnd >> inet_rsk(req)->rcv_wscale,
-			tcp_time_stamp, req->ts_recent,
-=======
-	tcp_v6_send_ack(sk, skb, tcp_rsk(req)->snt_isn + 1, tcp_rsk(req)->rcv_isn + 1,
-			req->rcv_wnd, tcp_time_stamp, req->ts_recent,
->>>>>>> android-8.0.0_r0.3
-			tcp_v6_md5_do_lookup(sk, &ipv6_hdr(skb)->daddr), 0);
+	 tcp_v6_send_ack(sk, skb, tcp_rsk(req)->snt_isn + 1, tcp_rsk(req)->rcv_isn + 1,
+	                 req->rcv_wnd >> inet_rsk(req)->rcv_wscale,
+	                 tcp_time_stamp, req->ts_recent,
+                     tcp_v6_md5_do_lookup(sk, &ipv6_hdr(skb)->daddr), 0);
 }
 
 

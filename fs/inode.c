@@ -1662,15 +1662,9 @@ int file_remove_suid(struct file *file)
 	if (killpriv)
 		error = security_inode_killpriv(dentry);
 	if (!error && killsuid)
-<<<<<<< HEAD
-		error = __remove_suid(dentry, killsuid);
-	if (!error)
-		inode_has_no_xattr(inode);
-=======
 		error = __remove_suid(file->f_path.mnt, dentry, killsuid);
 	if (!error && (inode->i_sb->s_flags & MS_NOSEC))
 		inode->i_flags |= S_NOSEC;
->>>>>>> android-8.0.0_r0.3
 
 	return error;
 }

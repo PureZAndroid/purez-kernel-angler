@@ -148,17 +148,6 @@ void get_derived_permission(struct dentry *parent, struct dentry *dentry)
 	get_derived_permission_new(parent, dentry, &dentry->d_name);
 }
 
-<<<<<<< HEAD
-void get_derive_permissions_recursive(struct dentry *parent) {
-	struct dentry *dentry;
-	list_for_each_entry(dentry, &parent->d_subdirs, d_child) {
-		if (dentry && dentry->d_inode) {
-			mutex_lock(&dentry->d_inode->i_mutex);
-			get_derived_permission(parent, dentry);
-			fix_derived_permission(dentry->d_inode);
-			get_derive_permissions_recursive(dentry);
-			mutex_unlock(&dentry->d_inode->i_mutex);
-=======
 static appid_t get_type(const char *name)
 {
 	const char *ext = strrchr(name, '.');
@@ -318,7 +307,6 @@ static void __fixup_perms_recursive(struct dentry *dentry, struct limit_search *
 	} else if (descendant_may_need_fixup(info->data, limit)) {
 		list_for_each_entry(child, &dentry->d_subdirs, d_u.d_child) {
 			__fixup_perms_recursive(child, limit, depth + 1);
->>>>>>> android-8.0.0_r0.3
 		}
 	}
 	spin_unlock(&dentry->d_lock);
