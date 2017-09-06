@@ -2132,10 +2132,7 @@ int expand_upwards(struct vm_area_struct *vma, unsigned long address)
 	address += PAGE_SIZE;
 	if (!address)
 		return -ENOMEM;
-<<<<<<< HEAD
-=======
 
->>>>>>> 07cf73fe282... BACKPORT: mm: larger stack guard gap, between vmas
 	/* Enforce stack_guard_gap */
 	gap_addr = address + stack_guard_gap;
 	if (gap_addr < address)
