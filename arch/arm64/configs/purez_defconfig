@@ -6,7 +6,7 @@
 #
 # PureZ Setup
 #
-CONFIG_LOCALVERSION="-angler:PureZ-Kernel-3.5"
+CONFIG_LOCALVERSION="-angler:PureZ-Kernel-4.0"
 # CONFIG_LOCALVERSION_AUTO is not set
 # CONFIG_CC_OPTIMIZE_FOR_SIZE is not set
 CONFIG_WAKE_GESTURES=y
