@@ -1,11 +1,11 @@
 #
-# Linux/arm64 3.10.107 Angler PureZ Kernel Configuration
+# Linux/arm64 3.10.108 Angler PureZ Kernel Configuration
 #
 
 #
 # PureZ Setup
 #
-CONFIG_LOCALVERSION="-angler:PureZ-Kernel-4.2"
+CONFIG_LOCALVERSION="-angler:PureZ-Kernel-4.5"
 # CONFIG_LOCALVERSION_AUTO is not set
 # CONFIG_CC_OPTIMIZE_FOR_SIZE is not set
 CONFIG_WAKE_GESTURES=y
